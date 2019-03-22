@@ -128,6 +128,20 @@ namespace Tensorflow
             return _op.outputs[0];
         }
 
+        /// <summary>
+        /// Returns the truth value of (x == y) element-wise.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static Tensor equal(Tensor x, Tensor y, string name = null)
+        {
+            var _op = _op_def_lib._apply_op_helper("Equal", name, args: new { x, y });
+
+            return _op.outputs[0];
+        }
+
         public static Tensor mul(Tensor x, Tensor y, string name = null)
         {
             var _op = _op_def_lib._apply_op_helper("Mul", name, args: new { x, y });
@@ -207,14 +221,14 @@ namespace Tensorflow
             return _op.outputs[0];
         }
 
-        public static Tensor sum(Tensor input, Tensor axis = null, bool keep_dims = false, string name = null)
+        public static Tensor _sum(Tensor input, Tensor axis = null, bool keep_dims = false, string name = null)
         {
             var _op = _op_def_lib._apply_op_helper("Sum", name, args: new { input, reduction_indices = axis, keep_dims });
 
             return _op.outputs[0];
         }
 
-        public static Tensor sum(Tensor input, int axis, bool keep_dims = false, string name = null)
+        public static Tensor _sum(Tensor input, int axis, bool keep_dims = false, string name = null)
         {
             var _op = _op_def_lib._apply_op_helper("Sum", name, args: new { input, reduction_indices = axis, keep_dims });
 
